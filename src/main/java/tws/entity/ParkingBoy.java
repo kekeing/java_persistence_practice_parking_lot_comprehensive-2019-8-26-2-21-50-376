@@ -5,6 +5,15 @@ public class ParkingBoy {
     private String parkingboyName;
     private int parkingboyAge;
 
+    public ParkingBoy() {
+    }
+
+    public ParkingBoy(int parkingboyId, String parkingboyName, int parkingboyAge) {
+        this.parkingboyId = parkingboyId;
+        this.parkingboyName = parkingboyName;
+        this.parkingboyAge = parkingboyAge;
+    }
+
     public int getParkingboyId() {
         return parkingboyId;
     }
