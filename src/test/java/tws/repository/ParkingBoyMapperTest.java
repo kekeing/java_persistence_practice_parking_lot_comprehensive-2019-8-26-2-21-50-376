@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @MybatisTest
-public class EmployeeMapperTest {
+public class ParkingBoyMapperTest {
 
     @Autowired
     private ParkingBoyMapper parkingBoyMapper;

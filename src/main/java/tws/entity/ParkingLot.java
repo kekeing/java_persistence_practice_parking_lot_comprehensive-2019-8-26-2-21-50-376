@@ -6,6 +6,16 @@ public class ParkingLot {
     private int parkinglotAvailablePositionCount;
     private int parkingboyId;
 
+    public ParkingLot() {
+    }
+
+    public ParkingLot(int parkinglotId, int parkinglotCapasity, int parkinglotAvailablePositionCount, int parkingboyId) {
+        this.parkinglotId = parkinglotId;
+        this.parkinglotCapasity = parkinglotCapasity;
+        this.parkinglotAvailablePositionCount = parkinglotAvailablePositionCount;
+        this.parkingboyId = parkingboyId;
+    }
+
     public int getParkinglotId() {
         return parkinglotId;
     }

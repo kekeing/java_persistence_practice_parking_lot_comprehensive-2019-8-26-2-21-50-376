@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface ParkingLotMapper {
     @Insert("insert into parkinglot values (#{parkingLot.parkinglotId},#{parkingLot.parkinglotCapasity},#{parkingLot.parkinglotAvailablePositionCount},#{parkingLot.parkingboyId})")
-    void insertParkingLot(@Param("ParkingLot") ParkingLot parkingLot);
+    void insertParkingLot(@Param("parkingLot") ParkingLot parkingLot);
     @Select("select * from parkinglot")
     List<ParkingLot> getAllParkingLot();
     @Select("select * from parkinglot where parkingboyId = #{parkingboyId}")
