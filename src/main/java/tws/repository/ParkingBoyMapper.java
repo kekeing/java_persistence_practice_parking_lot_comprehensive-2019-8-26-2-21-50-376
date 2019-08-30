@@ -10,6 +10,8 @@ public interface ParkingBoyMapper {
     void insertParkingBoy(@Param("parkingBoy") ParkingBoy parkingBoy);
     @Select("select * from parkingboy")
     List<ParkingBoy> getAllParkingBoy();
+    @Select("select * from parkingboy OFFSET #{skippedNumber} ROWS FETCH NEXT #{pageSize} ROWS ONLY")
+    List<ParkingBoy> getAllParkingBoyInPage(@Param("skippedNumber") int skippedNumber,@Param("pageSize") int pageSize);
 //    @Update("update parkingboy set name = #{parkingBoy.name}, age = #{parkingBoy.age}  where id = #{parkingBoy.id} ")
 //    void updateParkingBoyById(@Param("parkingBoy") ParkingBoy parkingBoy);
 //    @Delete("delete from parkingboy where id = #{id}")

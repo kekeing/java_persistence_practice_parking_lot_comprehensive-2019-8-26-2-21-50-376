@@ -53,11 +53,58 @@ public class ParkingBoyMapperTest {
     @Test
     public void shouldGetParkingBoyWhenCallInsertParkingBoy() {
         // given
-        parkingBoyMapper.insertParkingBoy(new ParkingBoy(1, "parkingBoys_1",18));
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(1,'parkingBoys_1',18);");
         // when
         List<ParkingBoy> employeeList = parkingBoyMapper.getAllParkingBoy();
         // then
         assertEquals(1, employeeList.get(0).getParkingboyId());
         assertEquals("parkingBoys_1", employeeList.get(0).getParkingboyName());
+    }
+
+    @Test
+    public void should_get_parking_boy_in_pages_when_call_get_parking_boy_given_insert_into_parking_boy_skippedNumber_1_pageSize_2(){
+        //given
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(1,'zhangsan',18);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(2,'lisi',19);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(3,'wangwu',20);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(4,'a',21);");
+        int skippedNumber = 1;
+        int pageSize = 2;
+
+        //when
+        List<ParkingBoy> employeeList = parkingBoyMapper.getAllParkingBoyInPage(skippedNumber,pageSize);
+
+        //then
+        assertEquals(2,employeeList.size());
+        assertEquals(2,employeeList.get(0).getParkingboyId());
+        assertEquals(3,employeeList.get(1).getParkingboyId());
+        assertEquals("lisi",employeeList.get(0).getParkingboyName());
+        assertEquals("wangwu",employeeList.get(1).getParkingboyName());
+        assertEquals(19,employeeList.get(0).getParkingboyAge());
+        assertEquals(20,employeeList.get(1).getParkingboyAge());
+
+    }
+    @Test
+    public void should_get_parking_boy_in_pages_when_call_get_parking_boy_given_insert_into_parking_boy_skippedNumber_2_pageSize_2(){
+        //given
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(1,'zhangsan',18);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(2,'lisi',19);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(3,'wangwu',20);");
+        jdbcTemplate.execute("INSERT INTO parkingboy VALUES(4,'a',21);");
+        int skippedNumber = 2;
+        int pageSize = 2;
+
+        //when
+        List<ParkingBoy> employeeList = parkingBoyMapper.getAllParkingBoyInPage(skippedNumber,pageSize);
+
+        //then
+        assertEquals(2,employeeList.size());
+        assertEquals(3,employeeList.get(0).getParkingboyId());
+        assertEquals(4,employeeList.get(1).getParkingboyId());
+        assertEquals("wangwu",employeeList.get(0).getParkingboyName());
+        assertEquals("a",employeeList.get(1).getParkingboyName());
+        assertEquals(20,employeeList.get(0).getParkingboyAge());
+        assertEquals(21,employeeList.get(1).getParkingboyAge());
+
     }
 }

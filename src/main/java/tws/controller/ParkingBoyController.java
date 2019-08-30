@@ -16,8 +16,15 @@ public class ParkingBoyController {
     private ParkingBoyService parkingBoyService;
 
     @GetMapping
-   public List<ParkingBoy> getAllParkingBoys(){
-        return   parkingBoyService.getAllParkingBoys();
+   public List<ParkingBoy> getAllParkingBoys(@RequestParam(name = "pageSize" , required = false) Integer pageSize,
+                                             @RequestParam(name = "showPage" , required = false) Integer showPage){
+       if (pageSize != null && showPage != null){return parkingBoyService.getAllParkingBoys(pageSize,showPage);}
+       else  return parkingBoyService.getAllParkingBoys();
+    }
+    @GetMapping("/")
+    public List<ParkingBoy> getAllParkingBoysInpage(@RequestParam(name = "showPage" , required = false) int showPage,
+                                                    @RequestParam(name = "pageSize" , required = false) int pageSize){
+        return parkingBoyService.getAllParkingBoyInPage(showPage,pageSize);
     }
     @PostMapping
     public void insertParkingBoys(@RequestBody ParkingBoy parkingBoy){
