@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tws.entity.ParkingLot;
 import tws.repository.ParkingLotMapper;
+import tws.service.ParkingLotService;
 
 import java.util.List;
 @RestController
@@ -11,19 +12,19 @@ import java.util.List;
 public class ParkingLotController {
 
     @Autowired
-    private ParkingLotMapper parkingLotMapper;
+    private ParkingLotService parkingLotService;
 
     @GetMapping
     public List<ParkingLot> getAllParkingLots(){
-        return parkingLotMapper.getAllParkingLot();
+        return parkingLotService.getAllParkingLots();
     }
     @PostMapping
     public void insertParkingLot(@RequestBody ParkingLot parkingLot){
-        parkingLotMapper.insertParkingLot(parkingLot);
+        parkingLotService.insertParkingLot(parkingLot);
     }
     @GetMapping(value = "/{parkingboyId}")
     public List<ParkingLot> getAllParkingLotsById(@PathVariable("parkingboyId") int parkingboyId){
-       return parkingLotMapper.getAllParkingLotById(parkingboyId);
+       return parkingLotService.getAllParkingLotsById(parkingboyId);
 
     }
 

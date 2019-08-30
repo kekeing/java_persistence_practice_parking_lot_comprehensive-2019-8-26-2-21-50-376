@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tws.entity.ParkingBoy;
 import tws.repository.ParkingBoyMapper;
+import tws.service.ParkingBoyService;
 
 import java.util.List;
 
@@ -12,15 +13,15 @@ import java.util.List;
 @RequestMapping("/parkingBoys")
 public class ParkingBoyController {
     @Autowired
-    private ParkingBoyMapper parkingBoyMapper;
+    private ParkingBoyService parkingBoyService;
 
     @GetMapping
    public List<ParkingBoy> getAllParkingBoys(){
-        return parkingBoyMapper.getAllParkingBoy();
+        return   parkingBoyService.getAllParkingBoys();
     }
     @PostMapping
     public void insertParkingBoys(@RequestBody ParkingBoy parkingBoy){
-        parkingBoyMapper.insertParkingBoy(parkingBoy);
+        parkingBoyService.insertParkingBoys(parkingBoy);
     }
 
 
