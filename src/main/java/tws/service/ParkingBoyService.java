@@ -4,6 +4,7 @@ package tws.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import tws.entity.ParkingBoy;
 import tws.repository.ParkingBoyMapper;
 
@@ -47,7 +48,21 @@ public class ParkingBoyService {
         List<ParkingBoy> showParkingBoys = parkingBoys.subList(start,end);
         return showParkingBoys;
     }
-    public void insertParkingBoys(@RequestBody ParkingBoy parkingBoy){
+    public void insertParkingBoys(ParkingBoy parkingBoy){
         parkingBoyMapper.insertParkingBoy(parkingBoy);
+
+    }
+
+    public void updateParkingBoyById(ParkingBoy parkingBoy){
+        parkingBoyMapper.updateParkingBoyById(parkingBoy);
+    }
+
+    public void deleteParkingBoyById(int id){
+        parkingBoyMapper.deleteParkingBoyById(id);
+    }
+
+    public ParkingBoy getparkingBoyById(int id){
+        return parkingBoyMapper.getparkingBoyById(id);
     }
 }
+

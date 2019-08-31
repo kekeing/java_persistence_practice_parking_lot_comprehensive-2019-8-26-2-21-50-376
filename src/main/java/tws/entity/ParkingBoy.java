@@ -1,8 +1,19 @@
 package tws.entity;
 
+
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class ParkingBoy {
+    @NotBlank
     private int parkingboyId;
+
+    @NotBlank(message = "用户名不能为空")
     private String parkingboyName;
+
+
     private int parkingboyAge;
 
     public ParkingBoy() {

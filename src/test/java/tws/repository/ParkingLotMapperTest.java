@@ -64,6 +64,7 @@ public class ParkingLotMapperTest {
         assertEquals(1, parkingLotsList.get(0).getParkinglotId());
         assertEquals(10, parkingLotsList.get(0).getParkinglotCapasity());
         assertEquals(10, parkingLotsList.get(0).getParkinglotAvailablePositionCount());
+        assertEquals(1,parkingLotsList.get(0).getParkingboyId());
     }
 }
 
