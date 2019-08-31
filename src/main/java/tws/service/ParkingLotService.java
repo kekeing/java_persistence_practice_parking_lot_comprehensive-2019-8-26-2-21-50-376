@@ -18,10 +18,16 @@ public class ParkingLotService {
         return parkingLotMapper.getAllParkingLot();
     }
 
-    public void insertParkingLot(@RequestBody ParkingLot parkingLot) {
+    public void insertParkingLot(ParkingLot parkingLot) {
         parkingLotMapper.insertParkingLot(parkingLot);
     }
-    public List<ParkingLot> getAllParkingLotsById(@PathVariable("parkingboyId") int parkingboyId){
+    public List<ParkingLot> getAllParkingLotsById(int parkingboyId){
         return parkingLotMapper.getAllParkingLotById(parkingboyId);
+    }
+    public void updateParkingLot(ParkingLot parkingLot){
+        parkingLotMapper.updateParkingLot(parkingLot);
+    }
+    public void deleteParkingLotById(int id){
+        parkingLotMapper.deleteParkingLotById(id);
     }
 }
