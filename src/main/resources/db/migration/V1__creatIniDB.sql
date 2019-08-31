@@ -15,7 +15,6 @@ CREATE TABLE `parkinglot` (
   `parkinglotAvailablePositionCount` int(11) DEFAULT NULL,
   `parkingboyId` int(11) DEFAULT NULL,
   PRIMARY KEY (`parkinglotId`),
-  FOREIGN KEY(parkingboyId) REFERENCES parkingboy(parkingboyId)
   );
 
 INSERT INTO `parkinglot` VALUES ('1', '50', '50', '1');
